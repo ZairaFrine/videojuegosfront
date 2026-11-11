@@ -1,0 +1,43 @@
+<h1> Catálogo de videojuegos </h1>
+
+@if (cargando) {
+  <p>
+    Cargando videojuegos...
+  </p>
+}
+
+
+@if (error) {
+  <p>
+    {{ error }}
+  </p>
+}
+
+
+@if (!cargando && !error) {
+  <h2>
+    Videojuegos encontrados: {{ videojuegos.length }}
+  </h2>
+  @for ( videojuego of videojuegos; track videojuego.ID ) {
+    <hr>
+    <h3> {{ videojuego.Nombre }} </h3>
+    <p>
+      <strong> Descripción: </strong>
+      {{ videojuego['Descripción'] }}
+    </p>
+
+    <p>
+      <strong> Lanzamiento: </strong>
+      {{ videojuego.Lanzamiento }}
+    </p>
+
+    <p>
+      <strong> Categorías: </strong>
+      {{ videojuego.categorias }}
+    </p>
+    <p>
+      <strong> Plataformas: </strong>
+      {{ videojuego.plataformas }}
+    </p>
+  }
+}
