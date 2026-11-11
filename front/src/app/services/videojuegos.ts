@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class Videojuegos {}
 
 
-
+//Comunicación con el backend para obtener los videojuegos
 @Injectable({ providedIn: 'root' })
 export class VideojuegosService {
 

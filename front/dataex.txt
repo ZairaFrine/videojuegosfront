@@ -1,3 +1,29 @@
+Instala A-ngular
 npm install -g @angular/cli
 
+Crea la carpeta de trabajo
 ng new videojuegos-front
+
+Iniciar Angular, uno u otro, NO los dos....
+npm start
+ng serve
+
+Acceso desde browser
+http://localhost:4200
+
+Abrir /src/app/app.html
+
+
+Crear servicios
+ng g s services/videojuegos --skip-tests
+
+Abrir /src/app/app.config.ts
+
+Abrir /src/app/services/videojuegos.ts
+
+Abrir /src/app/app.ts
+
+Abrir /src/app/app.html
+
+Probar, levantar back y levantar el front, los dos al mesmotiempo
+npm start
