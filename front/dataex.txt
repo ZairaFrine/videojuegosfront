@@ -1,3 +1,8 @@
+####################
+### INTRODUCCIÓN ###
+####################
+
+
 Instala A-ngular
 npm install -g @angular/cli
 
@@ -17,13 +22,34 @@ Abrir /src/app/app.html
 Crear servicios
 ng g s services/videojuegos --skip-tests
 
-Abrir /src/app/app.config.ts
+Abrir Carpeta
+/src/app/app.config.ts
 
-Abrir /src/app/services/videojuegos.ts
+Abrir Carpeta
+/src/app/services/videojuegos.ts
 
-Abrir /src/app/app.ts
+Abrir Carpeta
+/src/app/app.ts
 
-Abrir /src/app/app.html
+Abrir Carpeta
+/src/app/app.html
 
-Probar, levantar back y levantar el front, los dos al mesmotiempo
+levantar back y front:
 npm start
+
+
+###############################
+### Servicios y componentes ###
+###############################
+
+ng g c components/videojuegos --skip-tests
+
+
+
+Componentes y servicios de catálogos:
+
+ng g s services/categorias --skip-tests
+ng g c components/categorias --skip-tests
+
+ng g s services/plataformas --skip-tests
+ng g c components/plataformas --skip-tests

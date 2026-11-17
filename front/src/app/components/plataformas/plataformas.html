@@ -1,0 +1,17 @@
+<h2> Plataformas </h2>
+
+@if (cargando) {
+  <p> Cargando plataformas... </p>
+}
+
+@if (error) {
+  <p> {{ error }} </p>
+}
+
+@if (!cargando && !error) {
+  @for ( plataforma of plataformas; track plataforma.idPlat ) {
+    <article>
+      <strong> {{ plataforma.nmPlat }} </strong> <span> - {{ plataforma.actvPlat ? 'Activa' : 'Inactiva' }} </span>
+    </article>
+  }
+}

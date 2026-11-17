@@ -1,0 +1,13 @@
+<h2> Categorías </h2>
+
+@if (cargando) { <p> Cargando categorías... </p> }
+
+@if (error) { <p> {{ error }} </p> }
+
+@if (!cargando && !error) {
+  @for ( categoria of categorias; track categoria.idCat ) {
+    <article>
+      <strong> {{ categoria.nmCat }} </strong> <span> - {{ categoria.actvCat ? 'Activa' : 'Inactiva' }} </span>
+    </article>
+  }
+}
