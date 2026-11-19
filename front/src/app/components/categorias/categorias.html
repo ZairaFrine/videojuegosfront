@@ -1,9 +1,28 @@
 <h2> Categorías </h2>
 
+<h3> Nueva categoría </h3>
+
+
+<form [formGroup]="formularioCategoria" (ngSubmit)="guardarCategoria()" >
+
+  <label> Nombre: </label>
+
+  <input type="text" formControlName="nombre" >
+  @if ( formularioCategoria.controls.nombre.invalid && formularioCategoria.controls.nombre.touched ) {
+    <p> El nombre es obligatorio. </p>
+  }
+
+  <button type="submit" [disabled]="formularioCategoria.invalid" >
+    Guardar
+  </button>
+
+</form>
+
+<br><br>
+@if (mensaje) { <p> {{ mensaje }} </p> }
 @if (cargando) { <p> Cargando categorías... </p> }
-
 @if (error) { <p> {{ error }} </p> }
-
+<br><br>
 @if (!cargando && !error) {
   @for ( categoria of categorias; track categoria.idCat ) {
     <article>

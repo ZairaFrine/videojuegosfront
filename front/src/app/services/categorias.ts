@@ -10,4 +10,10 @@ export class CategoriasService {
     obtenerCategorias() {
       return this.http.get<any[]>( this.apiUrl );
     }
+
+    crearCategoria(
+      nombre: string
+    ) {
+      return this.http.post( this.apiUrl, { nombre: nombre } );
+    }
 }
