@@ -1,32 +1,81 @@
 <h2> Categorías </h2>
 
-<h3> Nueva categoría </h3>
-
+@if (idCategoriaEditar === null) {
+  <h3> Nueva categoría </h3>
+} @else {
+  <h3> Editar categoría </h3>
+}
 
 <form [formGroup]="formularioCategoria" (ngSubmit)="guardarCategoria()" >
 
-  <label> Nombre: </label>
+    <label> Nombre: </label>
+    <input type="text" formControlName="nombre" >
+    @if (
+        formularioCategoria.controls.nombre.invalid
+        &&
+        formularioCategoria.controls.nombre.touched
+    ) {
+        <p> El nombre es obligatorio. </p>
+    }
 
-  <input type="text" formControlName="nombre" >
-  @if ( formularioCategoria.controls.nombre.invalid && formularioCategoria.controls.nombre.touched ) {
-    <p> El nombre es obligatorio. </p>
-  }
+    @if (idCategoriaEditar === null) {
+      <button type="submit" [disabled]="formularioCategoria.invalid" >
+        Guardar
+      </button>
+    }
 
-  <button type="submit" [disabled]="formularioCategoria.invalid" >
-    Guardar
-  </button>
-
+    @if (idCategoriaEditar !== null) {
+      <button type="submit" [disabled]="formularioCategoria.invalid" >
+        Actualizar
+      </button>
+      <button type="button" (click)="cancelarEdicion()" >
+        Cancelar
+      </button>
+    }
 </form>
 
 <br><br>
+
 @if (mensaje) { <p> {{ mensaje }} </p> }
 @if (cargando) { <p> Cargando categorías... </p> }
 @if (error) { <p> {{ error }} </p> }
+
 <br><br>
+
 @if (!cargando && !error) {
-  @for ( categoria of categorias; track categoria.idCat ) {
-    <article>
-      <strong> {{ categoria.nmCat }} </strong> <span> - {{ categoria.actvCat ? 'Activa' : 'Inactiva' }} </span>
-    </article>
-  }
+  <h3> Categorías registradas </h3>
+  <table border="1" cellpadding="8">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+
+    <tbody>
+        @for ( categoria of categorias; track categoria.idCat ) {
+
+        <tr>
+            <td>{{ categoria.idCat }}</td>
+            <td>{{ categoria.nmCat }}</td>
+            <td>@if (categoria.actvCat) { Activa } @else { Inactiva }</td>
+            <td>
+              <button type="button" (click)="editarCategoria(categoria)">Editar</button>
+                @if (categoria.actvCat) {
+                  <button type="button" (click)="desactivarCategoria( categoria.idCat )" >
+                      Desactivar
+                  </button>
+                }
+                @if (!categoria.actvCat) {
+                  <button type="button" (click)="activarCategoria( categoria.idCat )" >
+                    Activar
+                  </button>
+                }
+            </td>
+        </tr>
+        }
+    </tbody>
+  </table>
 }
