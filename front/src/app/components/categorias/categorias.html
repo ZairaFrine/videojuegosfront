@@ -18,20 +18,11 @@
         <p> El nombre es obligatorio. </p>
     }
 
-    @if (idCategoriaEditar === null) {
-      <button type="submit" [disabled]="formularioCategoria.invalid" >
-        Guardar
-      </button>
-    }
+    <button type="submit" [disabled]="formularioCategoria.invalid" >
+      Guardar
+    </button>
+    
 
-    @if (idCategoriaEditar !== null) {
-      <button type="submit" [disabled]="formularioCategoria.invalid" >
-        Actualizar
-      </button>
-      <button type="button" (click)="cancelarEdicion()" >
-        Cancelar
-      </button>
-    }
 </form>
 
 <br><br>
